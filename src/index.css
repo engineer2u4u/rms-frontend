@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "./styles/roster.css";
+
+/* Tailwind utilities still available; Roster CSS variables drive component look. */

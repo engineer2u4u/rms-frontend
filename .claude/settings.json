@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(npm run lint)",
+      "Bash(mysqldump *)",
+      "Bash(openssl rand *)",
+      "Bash(adb devices)",
+      "Bash(adb logcat *)"
+    ]
+  }
+}

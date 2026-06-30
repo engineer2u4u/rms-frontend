@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.local
+
+# Env files — local + production secrets stay out of git
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Roster handoff artifacts (large, regeneratable from RMS-handoff.zip)
+roster-extracted/

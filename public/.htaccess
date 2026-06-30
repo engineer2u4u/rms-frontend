@@ -1,0 +1,29 @@
+# SPA fallback for React Router — every non-file/non-directory URL
+# rewrites to index.html so client-side routes work on hard reload.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Don't intercept the API subdirectory.
+    RewriteRule ^api/ - [L]
+
+    # Pass through real files and directories.
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Everything else → SPA entry.
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# Long cache for hashed asset files; index.html stays uncached so deploys
+# don't get stuck behind stale HTML.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
